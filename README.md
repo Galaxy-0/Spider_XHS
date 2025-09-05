@@ -62,13 +62,29 @@
 
 ## 🛠️ 快速开始
 ### ⛳运行环境
-- Python 3.7+
+- Python 3.8+（推荐 3.10，与 Dockerfile 一致）
 - Node.js 18+
 
 ### 🎯安装依赖
 ```
+# 方案A：传统方式
 pip install -r requirements.txt
 npm install
+```
+
+### 🧰 使用 uv（推荐本地隔离环境）
+```
+# 1) 安装并同步依赖（会创建 .venv）
+uv sync --dev
+
+# 2) 激活虚拟环境（Linux/macOS）
+source .venv/bin/activate
+
+# 3) 在虚拟环境中安装 Node 到 venv（不污染全局）
+nodeenv -p --node=20.14.0
+
+# 4) 安装前端依赖（使用 venv 内的 npm）
+npm ci
 ```
 
 ### 🎨配置文件
@@ -81,6 +97,8 @@ npm install
 ### 🚀运行项目
 ```
 python main.py
+# 或使用 uv 运行
+uv run python main.py
 ```
 
 ### 🗝️注意事项
@@ -129,5 +147,4 @@ python main.py
    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=cv-cat/Spider_XHS&type=Date" />
  </picture>
 </a>
-
 
