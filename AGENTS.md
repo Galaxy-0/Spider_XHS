@@ -1,5 +1,15 @@
 # Repository Guidelines
 
+## Progress Update (dev branch)
+- Added uv-based Python env: `pyproject.toml` + `uv.lock`; documented workflow in `README.md`.
+- New scripts in `scripts/`:
+  - `setup_uv.sh`: one-shot `uv sync` + `npm ci` + search/export.
+  - `check_env.py`: env check + keyword search + optional export.
+  - `export_notes_and_comments.py`: keyword → full note details → all comments → two Excel files.
+- Hardened ignores: `.gitignore` now excludes `.env`, `datas/`, `.DS_Store`; removed tracked `.env`.
+- Created and pushed `dev` branch (`origin/dev`). Verified search for “榴莲” returns ~45–50 notes and exports Excel to `datas/excel_datas/`.
+
+
 ## Project Structure & Module Organization
 - `apis/`: HTTP clients for Xiaohongshu (e.g., `xhs_pc_apis.py`, `xhs_creator_apis.py`).
 - `xhs_utils/`: helpers for cookies, signing, data IO (e.g., `common_util.py`, `data_util.py`). Creates `datas/media_datas` and `datas/excel_datas` on first run.
@@ -36,4 +46,3 @@
 - Never commit `.env` or cookies; `.gitignore` excludes them.
 - Pass secrets via env: `-e COOKIES=...` or `--env-file .env`.
 - Optional `proxies` args are supported by API methods; don’t hardcode secrets, tokens, or endpoints.
-
